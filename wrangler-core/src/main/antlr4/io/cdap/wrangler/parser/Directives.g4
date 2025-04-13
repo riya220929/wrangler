@@ -140,7 +140,7 @@ numberRange
  ;
 
 value
- : String | Number | Column | Bool
+ : String | Number | Column | Bool | BYTE_SIZE | TIME_DURATION
  ;
 
 ecommand
@@ -311,3 +311,9 @@ fragment Int
 fragment Digit
  : [0-9]
  ;
+
+// Byte size and time duration lexer rules
+fragment BYTE_UNIT : [kKmMgGtTpP]'B'?;
+fragment TIME_UNIT : ('ms'|'s'|'m'|'h'|'d');
+BYTE_SIZE : Number BYTE_UNIT;
+TIME_DURATION : Number TIME_UNIT;
